@@ -1,10 +1,11 @@
 let heroi = "Ximbinha"
 let xp = 0
 
-//Lutando 100x na dungeon
-for(let i = 0; i < 100; i++){
-    xp = dungeon(xp)
-}
+
+xp = dungeon(heroi, xp)
+
+
+console.log(heroi + " seu Xp atual é: " + xp)
 
 rankAtual()
 
@@ -43,18 +44,22 @@ function rankAtual(){
 }
 
 //Batalha na Dungeon pra ganhar xp
-function dungeon(xp){
+function dungeon(heroi, xp){
     let monstros = [
-        ["Slime", 5],
-        ["Lobo", 25],
-        ["Cachorro infernal", 80],
-        ["Minotauro", 100]
+        ["Slime", 50],
+        ["Lobo", 250],
+        ["Cachorro infernal", 800],
+        ["Minotauro", 1000]
     ]
+
+    for(let i = 0; i < 10; i++){
+        let monstroRandom = Math.floor(Math.random() * 4)
+
+        xp = xp + monstros[monstroRandom][1]
+        console.log(heroi + " você matou um " + monstros[monstroRandom][0] + 
+        " e ganhou " + monstros[monstroRandom][1] + " de experiência")
+    }
     
-    let monstroRandom = Math.floor(Math.random() * 4)
 
-    //console.log("Seja bem-vindo a Dungeon")
-    //console.log("Você matou um " + monstros[monstroRandom][0])
-
-    return xp + monstros[monstroRandom][1];
+    return xp
 }
